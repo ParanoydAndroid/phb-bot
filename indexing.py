@@ -16,5 +16,5 @@ loader = PyPDFLoader(PHB_PATH)
 pages = loader.load()
 
 vectorstore = Chroma.from_documents(
-    documents=pages, embedding=OpenAIEmbeddings(), persist_directory="./phb_db"
+    documents=pages, embedding=OpenAIEmbeddings(), persist_directory=settings.get('DB_PATH', './phb_db')
 )

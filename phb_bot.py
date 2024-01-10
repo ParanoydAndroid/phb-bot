@@ -8,11 +8,11 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import RunnablePassthrough
 
 dotenv.load_dotenv()
-
+settings = dotenv.dotenv_values(dotenv_path=dotenv.find_dotenv())
 
 # loading from disk
 embedding = OpenAIEmbeddings()
-vectorstore = Chroma(persist_directory="./phb_db", embedding_function=embedding)
+vectorstore = Chroma(persist_directory=settings.get('DB_PATH', './phb_db'), embedding_function=embedding)
 
 retriever = vectorstore.as_retriever()
 
