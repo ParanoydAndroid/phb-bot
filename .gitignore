@@ -1,0 +1,7 @@
+.env
+env
+.python-version
+**.pyc
+**.sqlite3
+phb_db/**
+**.pdf
